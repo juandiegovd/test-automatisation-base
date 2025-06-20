@@ -6,6 +6,7 @@ Feature: Marvel Characters API - Eliminar Personaje
     * header Content-Type = 'application/json'
     * def localUtil = read('classpath:marvel_utils.js')()
 
+  @id:1 @eliminar_personaje_ok
   Scenario Outline: T-API-HU-005-CA1 - Eliminar personaje
     * def consultaConsentimiento = localUtil.buscarPorNombreParaEliminar('<name>')
     * if (!consultaConsentimiento.id) karate.abort()
@@ -17,6 +18,7 @@ Feature: Marvel Characters API - Eliminar Personaje
       | name             |
       | Captain America  |
 
+  @id:2 @eliminar_personaje_no_existente
   Scenario Outline: T-API-HU-005-CA2 - Eliminar personaje no existente
     Given path endpoint + '/' + <id>
     When method delete
